@@ -1,5 +1,4 @@
 package com.revature.components;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,9 @@ public class Squarer {
     /**
      * TODO: Inject this field
      */
-    Multiplier multiplier;
+
+    @Autowired
+    private Multiplier multiplier;
 
     /**
      * Leverage the Multiplier dependency to multiply a value with itself.

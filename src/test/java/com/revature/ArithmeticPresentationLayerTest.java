@@ -7,12 +7,14 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+@SuppressWarnings("unused")
 public class ArithmeticPresentationLayerTest {
     static ArithmeticPresentationLayer app;
 
     @BeforeClass
     public static void setup() {
         // Create the Spring container
+        @SuppressWarnings("resource")
         ApplicationContext context =  new AnnotationConfigApplicationContext(ArithmeticPresentationLayer.class);
 
         // Retrieve the RoryApplication bean from the container

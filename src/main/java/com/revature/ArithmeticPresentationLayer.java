@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,13 +31,19 @@ public class ArithmeticPresentationLayer {
     private Multiplier multiplier;
     private Squarer squarer;
 
+    // Setter injection
+    @Autowired
+    public void setAdder(Adder adder) {
+        this.adder = adder;
+    }
+
+    @Autowired
     public void setMultiplier(Multiplier multiplier) {
         this.multiplier = multiplier;
     }
 
-    public ArithmeticPresentationLayer(Squarer squarer) {
-        this.squarer = squarer;
-    }
+
+   
 
     public static void main(String[] args) {
         // Use this main method for manual testing (optional)
@@ -44,8 +51,18 @@ public class ArithmeticPresentationLayer {
         ApplicationContext context =  new AnnotationConfigApplicationContext(ArithmeticPresentationLayer.class);
 
         // Retrieve the RoryApplication bean from the container
-        ArithmeticPresentationLayer app = context.getBean(ArithmeticPresentationLayer.class);
+        try {
+            ArithmeticPresentationLayer app = context.getBean(ArithmeticPresentationLayer.class);
+            // Example usage (optional)
+            System.out.println(app.addConvertToString(2, 3));
+            System.out.println(app.multiplyConvertToString(2, 3));
+            System.out.println(app.squareConvertToString(3));
+        } finally {
+            ((AbstractApplicationContext) context).close();  // Always close the context to avoid resource leaks
+        }
     }
+
+
 
     /**
      * @param a - number 1
