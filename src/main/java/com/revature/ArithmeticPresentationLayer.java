@@ -30,7 +30,13 @@ public class ArithmeticPresentationLayer {
     private Adder adder;
     private Multiplier multiplier;
     private Squarer squarer;
-
+// Constructor injection for all dependencies
+@Autowired
+public ArithmeticPresentationLayer(Adder adder, Multiplier multiplier, Squarer squarer) {
+    this.adder = adder;
+    this.multiplier = multiplier;
+    this.squarer = squarer;
+}
     // Setter injection
     @Autowired
     public void setAdder(Adder adder) {
@@ -41,9 +47,6 @@ public class ArithmeticPresentationLayer {
     public void setMultiplier(Multiplier multiplier) {
         this.multiplier = multiplier;
     }
-
-
-   
 
     public static void main(String[] args) {
         // Use this main method for manual testing (optional)
@@ -61,8 +64,6 @@ public class ArithmeticPresentationLayer {
             ((AbstractApplicationContext) context).close();  // Always close the context to avoid resource leaks
         }
     }
-
-
 
     /**
      * @param a - number 1

@@ -1,0 +1,7 @@
+commit a7125a6a65de4213417fc1ff038574824d06a2dd
+Author: Oday Alfarttosi <oday.mechanical@gmail.com>
+Date:   Sun Nov 10 22:37:35 2024 +0000
+
+    lab completed
+
+ 6 files changed, 33 insertions(+), 7 deletions(-)
